@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "@ng-bootstrap/ng-bootstrap": "^14.0.1",
+    "ng-carousel": "^0.2.0",
+    "reflect-metadata": "^0.1.13",
+    "ts-mockito": "^2.6.1",
+    "typedi": "^0.10.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.4",
+    "@types/mocha": "^10.0.1",
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "mongodb-memory-server": "^8.11.4"
+  }
+}

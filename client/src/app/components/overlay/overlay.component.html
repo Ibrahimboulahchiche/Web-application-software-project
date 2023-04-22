@@ -1,0 +1,12 @@
+<div class="flex-row center overlay">
+    <button *ngIf="isPlayable" class="button-style" (click)="createSoloGame()">Jouer</button>
+    <button *ngIf="isPlayable" class="button-style" (click)="matchToJoinIfAvailable ? joinGame() : createOneVersusOneGame()">
+        {{ matchToJoinIfAvailable ? 'Rejoindre' : 'Creer' }}
+    </button>
+    <button *ngIf="!isPlayable" class="button-style" (click)="showDeletePopUp()">Supprimer</button>
+    <button *ngIf="!isPlayable" class="button-style" (click)="showResetPopUp()">Réinitialiser</button>
+</div>
+<div class="flex-row center">
+    <app-delete-games-pop-up #deletePopUpElement (isDeleteRequest)="deleteSelectedGame($event)"></app-delete-games-pop-up>
+    <app-reset-pop-up #resetPopUpElement #deletePopUpElement (isResetRequest)="resetSelectedGame($event)"></app-reset-pop-up>
+</div>

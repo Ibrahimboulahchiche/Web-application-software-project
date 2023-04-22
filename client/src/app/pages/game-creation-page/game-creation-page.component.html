@@ -1,0 +1,163 @@
+<head>
+    <meta charset="UTF-8" />
+    <title>Page de création de jeu</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+</head>
+<body class="center">
+    <section class="flex-column center">
+        <h1>Création de jeu</h1>
+        <app-quit-button (click)="onQuitGame()"></app-quit-button>
+    </section>
+    <div class="flex-row center main-container">
+        <div class="flex-column center">
+            <div class="canvas">
+                <canvas #originalImage width="640px" height="480px">IMAGE ORIGINALE</canvas>
+                <canvas #drawingCanvasOne class="drawing-canvas" width="640px" height="480px">CANVAS DE DESSIN</canvas>
+            </div>
+            <div class="flex-row picture-option">
+                <div class="flex-column">
+                    <div class="flex-row center button-title left right">ARRIÈRE PLAN</div>
+                    <div class="flex-row">
+                        <button class="button-style center smaller" (click)="resetBackgroundCanvas(false)">
+                            <span class="material-symbols-outlined optionIcon"> reset_image </span>
+                            <div class="bigger-font">Supprimer image</div>
+                        </button>
+                        <button class="button-style center smaller" (click)="input1.click()">
+                            <span class="material-symbols-outlined optionIcon"> add_photo_alternate </span>
+                            <div class="bigger-font">Ajouter image</div>
+                        </button>
+                        <input #input1 type="file" class="display" accept="image/bmp" (input)="processImage($event, false)" />
+                    </div>
+                </div>
+                <div>
+                    <div class="flex-row center button-title right">DESSIN</div>
+                    <div class="flex-row">
+                        <button class="button-style center smaller" (click)="this.drawingService.resetForegroundCanvas(true)">
+                            <span class="material-symbols-outlined optionIcon"> delete </span>
+                        </button>
+                        <button class="button-style center smaller" (click)="this.drawingService.duplicateCanvas(false)">
+                            <span class="material-symbols-outlined optionIcon"> content_copy </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-column center">
+            <div class="flex-column">
+                <div class="flex-row center penWidth">
+                    <button class="button-style no-hover bigger">{{ this.drawingService.penWidth }}</button>
+                    <div>
+                        <button class="button-style center" title="Augmenter rayon" (click)="this.drawingService.setPenWidth(true)">
+                            <span class="material-symbols-outlined"> add </span>
+                        </button>
+                        <button class="button-style center" title="Diminuer rayon" (click)="this.drawingService.setPenWidth(false)">
+                            <span class="material-symbols-outlined"> remove </span>
+                        </button>
+                    </div>
+                </div>
+                <button #pen class="button-style center" title="Crayon" (click)="this.drawingService.selectTool('crayon')">
+                    <span class="material-symbols-outlined optionIcon"> edit </span>
+                </button>
+                <button #eraser class="button-style center" title="Efface" (click)="this.drawingService.selectTool('eraser')">
+                    <img src=".\assets\img\rubber-icon.png" alt="rubber-Icon" />
+                </button>
+
+                <button #rectangle class="button-style center" title="Outil rectangle" (click)="this.drawingService.selectTool('rectangle')">
+                    <img src=".\assets\img\selection.png" alt="rubber-Icon" class="optionIcon" />
+                </button>
+                <button class="button-style center" (click)="colorPicker.click()">
+                    <div class="color-picker-container">
+                        <span class="material-symbols-outlined optionIcon"> palette </span>
+                    </div>
+                </button>
+                <input #colorPicker type="color" title="Couleurs" (input)="refreshSelectedColor()" class="hidden-input" />
+            </div>
+            <br />
+            <br />
+
+            <br />
+            <br />
+
+            <button class="button-style center" title="Inverser dessin" (click)="this.drawingService.swapForegrounds()">
+                <span class="material-symbols-outlined optionIcon"> swap_horiz </span>
+            </button>
+            <div class="reverse-control center">
+                <button class="button-style center" title="Undo" (click)="this.drawingService.undo()">
+                    <span class="material-symbols-outlined optionIcon"> undo </span>
+                </button>
+                <button class="button-style center" title="Redo" (click)="this.drawingService.redo()">
+                    <span class="material-symbols-outlined optionIcon"> redo </span>
+                </button>
+            </div>
+            <div class="image-option">
+                <button class="button-style center" (click)="bothImagesButton.click()">
+                    <span class="material-symbols-outlined optionIcon"> add_photo_alternate </span>
+                    Ajouter même image
+                </button>
+                <input
+                    type="file"
+                    id="both-images"
+                    accept="image/bmp"
+                    #bothImagesButton
+                    (input)="processImage($event, false); processImage($event, true)"
+                    style="display: none"
+                />
+            </div>
+        </div>
+
+        <div class="flex-column center">
+            <div class="canvas">
+                <canvas #modifiedImage width="640px" height="480px">IMAGE MODIFIÉE</canvas>
+                <canvas #drawingCanvasTwo class="drawing-canvas" width="640px" height="480px">CANVAS DE DESSIN</canvas>
+            </div>
+            <div class="flex-row picture-option">
+                <div class="flex-column">
+                    <div class="flex-row center button-title left">DESSIN</div>
+                    <div class="flex-row">
+                        <button class="button-style center" (click)="this.drawingService.duplicateCanvas(true)">
+                            <span class="material-symbols-outlined optionIcon"> content_copy </span>
+                        </button>
+
+                        <button class="button-style center" (click)="this.drawingService.resetForegroundCanvas(false)">
+                            <span class="material-symbols-outlined optionIcon center"> delete </span>
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex-row center button-title left right">ARRIÈRE PLAN</div>
+                    <div class="flex-row">
+                        <button class="button-style center" (click)="input2.click()">
+                            <span class="material-symbols-outlined optionIcon"> add_photo_alternate </span>
+                            <div class="bigger-font">Ajouter image</div>
+                        </button>
+                        <input #input2 type="file" class="display" accept="image/bmp" (input)="processImage($event, true)" />
+                        <button class="button-style center" (click)="resetBackgroundCanvas(true)">
+                            <span class="material-symbols-outlined optionIcon"> reset_image </span>
+                            <div class="bigger-font">Supprimer image</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex-row center game-container">
+        <div>
+            <div class="button-style center no-hover bigger">
+                RAYON POUR LES DIFFÉRENCES
+                <select #radiusInput class="button-style select-enlarged" [(ngModel)]="enlargementRadius">
+                    <option value="0">0</option>
+                    <option value="3">3</option>
+                    <option value="9">9</option>
+                    <option value="15">15</option>
+                </select>
+            </div>
+        </div>
+        <button class="button-style bigger center" (click)="sendImageToServer()">
+            <span class="material-symbols-outlined optionIcon"> search </span>RECHERCHE DE DIFFERENCES
+        </button>
+    </div>
+    <app-creation-result-modal #resultModal [totalDifferences]="this.totalDifferences" [isEasy]="this.isEasy"></app-creation-result-modal>
+    <app-game-over-pop-up #popUpElement class="popUp"></app-game-over-pop-up>
+</body>

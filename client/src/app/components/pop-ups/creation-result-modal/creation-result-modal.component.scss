@@ -1,0 +1,77 @@
+.button-style {
+    display: flex;
+  
+    padding: 1vh 2vh;
+    scale: 0.7;
+}
+
+.no-hover {
+    &:hover {
+      transform: scale(1);
+      background-color: white;
+    }
+}
+
+.not-allowed {
+    cursor: not-allowed;
+}
+
+.optionIcon{
+    scale: 1.5;
+    padding: 1vh;
+}
+
+.canvas {
+    width: 640px;
+    height: 480px;
+    border: solid;
+    background-color: whitesmoke;
+}
+
+.bgModal {
+	background-color: rgba(0, 0, 0, 0.8);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+    left: 0;
+	display: none;
+}
+
+.modal-contents {
+	height: 80vh;
+	width: 60vw;
+	background-color: white;
+	text-align: center;
+	padding: 20px;
+	position: relative;
+	border-radius: 5px;
+}
+
+input {
+	margin: 15px auto;
+	display: block;
+	width: 75%;
+	padding: 8px;
+	border: 1px solid gray;
+  border-radius: 1vh;
+}
+
+.close {
+	position: absolute;
+	top: 3vh;
+	right: 2vw;
+	font-size: 42px;
+	color: #333;
+	cursor: pointer;
+	&:hover {
+		color: #666;
+	}
+}
+
+input.ng-invalid {
+  background-color:rgb(249, 99, 99);
+}
+input.ng-valid {
+  background-color:lightgreen;
+}

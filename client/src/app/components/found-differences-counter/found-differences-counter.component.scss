@@ -1,0 +1,30 @@
+.container {
+    padding: 1vh;
+    width: auto;
+
+    border-radius: 10px;
+    border: solid;
+
+    background-color: whitesmoke;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+
+    font-size: 1.5vh;
+    letter-spacing: 0.1vw;
+}
+
+.username {
+
+    max-width: 5vw;
+    width: auto;
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    font-size: 1.5vh;
+    font-weight: 600;
+    letter-spacing: 0.1vw;
+}
+
+.text {
+    color: black;
+}

@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    position: absolute;
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 20vh;
+    border: solid;
+    background-color: white;
+
+    height: 15vh;
+    width: 2.2vw;
+    top: 57%;
+    right: 0vw;
+
+    cursor: pointer;
+
+    transform: translateX(-50%) translateY(-50%);
+    transition: transform 0.1s;
+    $transition-time: 0.15s;
+
+    &:hover {
+        transform: translateX(-45%) translateY(-50%) scale(0.9);
+        background-color: lightsalmon;
+    }
+}
+
+.icon {
+    scale: 2.5;
+    font-weight: 500;
+}

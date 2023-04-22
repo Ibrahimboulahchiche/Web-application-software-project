@@ -1,0 +1,90 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    display: flex;
+    flex-direction: column;
+    
+    margin: 0;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+    background-color: lightblue;
+    height: 1080;
+    width: 1920;
+
+    // Disable user selection
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Standard */
+}
+
+/* Box styles: */
+.center{
+    justify-content: center;
+    align-items: center;
+}
+
+.space-around{
+    justify-content: space-around;
+    align-items: center;
+}
+
+.space-between{
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+
+/* Text styles: */
+.font-size {
+    font-size: 1.5vh;
+}
+
+/* Cursor styles: */
+.not-allowed {
+    cursor: not-allowed;
+}
+
+.allowed {
+    cursor: pointer;
+}
+
+/* Button styles: */
+.button-style {
+    font-weight: 600;
+    font-size: 1.7vh;
+    letter-spacing: 0.1vw;
+
+    background-color: white;
+
+    border-radius: 2vw;
+    border: solid;
+
+    padding: 2vh 4vh;
+
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(0.9);
+        background-color: lightsalmon;
+    }
+}
+
+.no-hover {
+    &:hover {
+      transform: scale(1);
+      background-color: white;
+    }
+}
+
+
+

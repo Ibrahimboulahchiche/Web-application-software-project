@@ -1,0 +1,13 @@
+<div class="flex-row center container">
+    <div class="flex-row username text">
+        <strong>{{ username }}</strong>
+    </div>
+    <div class="flex-row center text">
+        <p>
+            :
+            {{ differencesNbr === -1 ? differencesFound + ' différence' + (differencesFound > 1 ? 's' : '') + ' trouvée' + (differencesFound > 1 ? 's' : '')
+            ! : differencesFound + ' sur ' + differencesNbr + ' différence' + (differencesFound > 1 ? 's' : '') + ' trouvée' + (differencesFound > 1 ?
+            's' : '') }} !
+        </p>
+    </div>
+</div>

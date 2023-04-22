@@ -1,0 +1,35 @@
+<div #bgModal class="bgModal center">
+    <div class="flex-column center modal-contents">
+        <span #close class="material-symbols-outlined close" (click)="closePopUp()"> close </span>
+        <h2>Différences entre les deux images</h2>
+        <canvas #imagePreview width="640px" height="480px" class="canvas">Image From Server</canvas>
+        <app-spinner #spinner></app-spinner>
+        <form #gameNameForm [formGroup]="titleRegistration" class="flex-column center">
+            <p>Il y a {{ totalDifferences }} différences (Difficulté : {{ isEasy ? 'facile' : 'difficile' }})</p>
+            <p>Veuillez choisir un nom pour le jeu :</p>
+            <input
+                id="gameName"
+                type="text"
+                placeholder="Titre pour le nouveau jeu"
+                formControlName="title"
+                [(ngModel)]="gameName"
+                required
+                autocomplete="off"
+            />
+            <button
+                class="button-style no-hover center"
+                [disabled]="titleRegistration.invalid"
+                [ngClass]="{ 'not-allowed': titleRegistration.invalid, allowed: titleRegistration.valid }"
+                (click)="sendGameNameToServer()"
+            >
+                <span class="material-symbols-outlined optionIcon"> fact_check </span>Sauvegarder le jeu
+            </button>
+        </form>
+        <p #errorPopupText>
+            ERREUR : Le nombre de differences doit être compris entre 3 et 9 !
+            <br />
+            <br />
+            Nombre de differences : {{ totalDifferences }}
+        </p>
+    </div>
+</div>

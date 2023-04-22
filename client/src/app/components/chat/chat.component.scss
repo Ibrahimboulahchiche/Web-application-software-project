@@ -1,0 +1,86 @@
+.chat-container {
+  width: 16vw;
+  height: 50vh;
+  
+  margin-right: 0.5vw;
+
+  background-color: whitesmoke;
+
+  border-radius: 2vh;
+  border: solid;
+}
+  
+.chat-header {
+  font-size: 2.5vh;
+  font-weight: bold;
+  margin-bottom: 3vh;
+}
+  
+.chat-body {
+  height: 32vh;
+  width: 15vw;
+
+  overflow-y: auto;
+
+  background-color: white;
+}
+  
+.message-container {
+  width: 12.5vw;
+
+  margin: 0.5vh;
+  padding: 1vh;
+
+  border-radius: 1vh;
+  border: solid 0.2vh;
+
+  overflow-x: hidden;
+  word-wrap: break-word;
+}
+
+.sent-by-player-1 {
+  background-color: #FFEA20;
+}
+  
+.sent-by-player-2 {
+  background-color: #B1D7B4;
+}
+
+.sent-by-system {
+  background-color: #f8ac79
+}
+
+.sent-updated-score {
+  background-color: #ec8bcd
+}
+  
+.message-username {
+  font-style: italic;
+}
+
+.chat-footer {
+  margin-top: 1vh;
+  justify-content: space-between;
+}
+
+button {
+  background-color: rgb(228, 228, 0);
+  padding: 1vh 3vh;
+    
+  border-radius: 2vw;
+  border: none;
+  cursor: pointer;
+
+  font-weight: 600;
+  font-size: 1.7vh;
+  letter-spacing: 0.1vw;
+}
+
+input {
+  width: 6vw;
+  border-radius: 2vw;
+  padding: 1.5vh 4vh;
+
+  font-weight: 600;
+  font-size: 1.5vh;
+}

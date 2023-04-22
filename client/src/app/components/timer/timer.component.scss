@@ -1,0 +1,36 @@
+.count-down-timer {
+  position: absolute;
+
+  top: 18vh;
+  right: 48vw;
+
+  box-shadow: 2px 6px 9px 2px rgb(0 0 0 / 20%);
+  border: solid;
+  border-radius: 6px;
+  
+  background-color: whitesmoke;
+
+  height: 6vh;
+  width: 8.5vw;
+  padding: 1vh;
+}
+
+.description {
+  justify-content: space-around;
+
+  height: 3vh;
+  width: 8vw;
+
+  font-size: 1.75vh;
+}
+
+.times {
+  justify-content: space-around;
+
+  width: 8vw;
+  height: 3vh;
+
+  font-size: 3vh;
+}
+  
+  

@@ -1,0 +1,39 @@
+.button-style {
+    padding: 2vh 8vh;
+    margin: 3vw;
+}
+
+/* Icon style */
+.logoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+}
+
+.logoContainer #gameIcon {
+    width: 40vh;
+    height: 40vh;
+}
+
+.navBarContainer {
+    height: 20vh;
+}
+
+/* Credit style */
+.footer-item {
+    margin: 10vh 15vh 0vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.dev-team {
+    justify-content: space-evenly;
+    margin-left: 15vw;
+    margin-right: 15vw;
+}
+
+.not-allowed {
+    cursor: not-allowed;
+}

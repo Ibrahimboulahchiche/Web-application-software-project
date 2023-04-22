@@ -1,0 +1,207 @@
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <title>Page de Configurations</title>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+</head>
+
+<body>
+    <app-back-button></app-back-button>
+    <header class="flex-row center">
+        <h1>Paramètres généraux</h1>
+        <div class="flex-row config-btn">
+            <button class="button-style" routerLink="/creation">Créer un jeu</button>
+            <button class="button-style" routerLink="/config">Configurations des jeux</button>
+        </div>
+    </header>
+
+    <div class="flex-row center main-container">
+        <div class="flex-column center const-container">
+            <div *ngIf="confirmation" class="flex-column center confirmation-container">
+                <div class="flex-column center button-style no-hover cadre">
+                    <div class="flex-column center confirmation-message">
+                        <h2>Êtes vous sûr de vouloir {{ isReset ? 'réinitialiser' : 'sauvegarder' }} les constantes de jeu?</h2>
+                        <p><b> Ce changement s'applique à tous les joueurs !</b></p>
+                    </div>
+                    <div class="flex-row space-around confirmation-btn">
+                        <button *ngIf="isReset" class="button-style" (click)="this.gameConstantsService.updateConstants(true); confirmation = false">
+                            OUI
+                        </button>
+                        <button
+                            *ngIf="!isReset"
+                            class="button-style"
+                            (click)="this.gameConstantsService.updateConstants(false); confirmation = false"
+                        >
+                            OUI
+                        </button>
+                        <button class="button-style" (click)="confirmation = false">NON</button>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p class="title"><b> Constantes de jeu</b></p>
+                <div class="flex-row center">
+                    <div class="flex-column const-input">
+                        <div><b>Temps initial du compte à rebours</b></div>
+                        <div><b>Temps de pénalité pour l’utilisation d’un indice</b></div>
+                        <div><b> Temps gagné avec la découverte d’une différence</b></div>
+                    </div>
+                    <div class="flex-column const-input">
+                        <div class="flex-column center">
+                            <div class="value">
+                                <b>{{ this.gameConstantsService.constants.countdownValue }} secondes</b>
+                            </div>
+                            <input
+                                #rangeValue
+                                class="range-slider"
+                                type="range"
+                                [(ngModel)]="this.gameConstantsService.constants.countdownValue"
+                                min="10"
+                                max="120"
+                            />
+                        </div>
+
+                        <div class="flex-column center">
+                            <div class="value">
+                                <b>{{ this.gameConstantsService.constants.penaltyValue }} secondes</b>
+                            </div>
+                            <input
+                                #rangeValue
+                                class="range-slider"
+                                type="range"
+                                [(ngModel)]="this.gameConstantsService.constants.penaltyValue"
+                                min="0"
+                                max="10"
+                            />
+                        </div>
+
+                        <div class="flex-column center">
+                            <div class="value">
+                                <b>{{ this.gameConstantsService.constants.bonusValue }} secondes</b>
+                            </div>
+                            <input
+                                #rangeValue
+                                class="range-slider"
+                                type="range"
+                                [(ngModel)]="this.gameConstantsService.constants.bonusValue"
+                                min="0"
+                                max="10"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-row">
+                    <button class="button-style flex-row center const-btn not-allowed" (click)="confirmation = true; isReset = true">
+                        <span class="material-symbols-outlined option-icon"> device_reset </span>
+                        Réinitialiser les constantes
+                    </button>
+                    <button class="button-style flex-row center const-btn not-allowed" (click)="confirmation = true; isReset = false">
+                        <span class="material-symbols-outlined option-icon"> save </span>
+                        Sauvegarder les constantes
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="history-container"
+            [ngClass]="{
+                background: historyConfirmation
+            }"
+        >
+            <div *ngIf="historyConfirmation" class="flex-column center confirmation-history-container">
+                <div class="flex-column center button-style no-hover cadre">
+                    <div class="flex-column center confirmation-message">
+                        <h2 *ngIf="!this.historyService.isHistoryEmpty">Êtes vous sûr de vouloir supprimer tout l'historique des parties ?</h2>
+                        <p *ngIf="!this.historyService.isHistoryEmpty"><b> Ce changement est définitif !</b></p>
+                        <h2 *ngIf="this.historyService.isHistoryEmpty">L'historique est déjà vide</h2>
+                    </div>
+                    <div class="flex-row space-around confirmation-btn">
+                        <button
+                            *ngIf="!this.historyService.isHistoryEmpty"
+                            class="button-style"
+                            (click)="this.historyService.deleteHistory(); confirmation = false"
+                        >
+                            OUI
+                        </button>
+                        <button *ngIf="!this.historyService.isHistoryEmpty" class="button-style" (click)="historyConfirmation = false">NON</button>
+                        <button *ngIf="this.historyService.isHistoryEmpty" class="button-style" (click)="historyConfirmation = false">OK</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-row center">
+                <p class="title"><b> Historique des parties jouées </b></p>
+                <button class="button-style delete-btn center" (click)="this.historyConfirmation = true">
+                    <span class="material-symbols-outlined option-icon"> delete </span>
+                </button>
+            </div>
+
+            <div class="history-board flex-column">
+                <div class="flex-row center history-card space-around" *ngFor="let history of this.historyService.gameHistories">
+                    <div class="flex-column center game-mode">
+                        <b>{{ history.gameMode }}</b>
+                        <div>{{ history.startingTime }}</div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="flex-row center">
+                        <span
+                            class="material-symbols-outlined"
+                            *ngIf="
+                                history.gameMode === 'Classique - 1vs1' ||
+                                (history.gameMode === 'Classique - Solo' && !history.isWinByDefault) ||
+                                (history.gameMode === 'Temps Limité - Solo' && !history.isWinByDefault && !history.isGameLoose)
+                            "
+                        >
+                            military_tech
+                        </span>
+
+                        <span
+                            [ngClass]="{
+                                'crossed-out':
+                                    (history.gameMode === 'Classique - Solo' || history.gameMode === 'Temps Limité - Solo') && history.isWinByDefault,
+                                'text-bold':
+                                    (!history.isWinByDefault && !history.isGameLoose) ||
+                                    history.gameMode === 'Classique - 1vs1' ||
+                                    (history.gameMode === 'Temps Limité - Coop' && !history.isGameLoose)
+                            }"
+                        >
+                            {{ history.player1 }}
+                        </span>
+
+                        <span *ngIf="history.player2 !== '' && history.gameMode === 'Classique - 1vs1'">&nbsp;VS&nbsp;</span>
+                        <span
+                            *ngIf="
+                                (history.player2 !== '' && history.gameMode === 'Temps Limité - Coop') ||
+                                (history.gameMode === 'Temps Limité  - Solo' && history.isWinByDefault)
+                            "
+                            >&nbsp;ET&nbsp;</span
+                        >
+                        <span
+                            *ngIf="!(history.player2 !== '' && history.gameMode === 'Temps Limité - Solo')"
+                            [ngClass]="{
+                                'crossed-out':
+                                    ((history.gameMode === 'Classique - 1vs1' ||
+                                        history.gameMode === 'Temps Limité - Coop' ||
+                                        history.gameMode === 'Classique - Solo') &&
+                                        history.isWinByDefault) ||
+                                    (history.gameMode === 'Temps Limité - Solo' && history.isWinByDefault),
+                                'text-bold': history.gameMode === 'Temps Limité - Coop' && !history.isGameLoose
+                            }"
+                        >
+                            {{ history.player2 }}
+                        </span>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="flex-row game-time space-around">
+                        <div><b>Durée : </b> {{ history.duration }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

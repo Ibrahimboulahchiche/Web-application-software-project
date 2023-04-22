@@ -1,0 +1,22 @@
+.button-style {
+    margin: 10vh 2vw 0vh 2vw;
+}
+
+.overlay {
+    position: absolute;
+
+    width: 40vw;
+    height: 39vh;
+    border-radius: 1.5vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.not-allowed {
+    cursor: not-allowed;
+}

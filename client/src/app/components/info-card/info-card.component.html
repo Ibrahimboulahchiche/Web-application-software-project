@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+<div class="flex-column center info-container">
+    <div class="flex-row center title">
+        <span class="flex-row center material-symbols-outlined icon"> info </span>
+        <p>Informations</p>
+    </div>
+    <div>
+        <p class="font-size"><strong>Nom du jeu : </strong> {{ this.name }}</p>
+        <p class="font-size"><strong>Mode : </strong> {{ this.matchTypeToString }}</p>
+        <p class="font-size"><strong>Niveau :</strong> {{ this.difficulty }}</p>
+        <p *ngIf="isSoloMode" class="font-size"><strong> Pénalité par indice : </strong> {{ this.gameConstantsService?.penaltyValue }} s</p>
+        <p *ngIf="isLimitedMode" class="font-size"><strong> Temps bonus : </strong> {{ this.gameConstantsService?.bonusValue }} s</p>
+    </div>
+</div>

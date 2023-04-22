@@ -1,0 +1,32 @@
+.modal {
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+.delete-all-games {
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.delete-game {
+	width: 40vw;
+	height: 39vh;
+
+	border-radius: 2vh;
+}
+
+.modal-contents {
+	position: absolute;
+
+	width: 25vw;
+	height: 20vh;
+
+	background-color: lightcoral;
+	border-radius: 2vh;
+	padding: 2vh;
+}
+
+.modal-btn {
+	margin: 1vh;
+}

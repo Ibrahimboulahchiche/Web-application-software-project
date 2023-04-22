@@ -1,0 +1,25 @@
+<div #bgModal class="bgModal center">
+    <div class="flex-column center modal-contents">
+        <div *ngFor="let info of popUpInfo">
+            <div #close class="close" (click)="closePopUp()"></div>
+            <div
+                class="center flex-column modal-contents"
+                [ngClass]="{
+                    'confirmation-modal': info.isConfirmation,
+                    'game-over-modal': info.isGameOver
+                }"
+            >
+                <h1>{{ info.title }}</h1>
+                <p>
+                    <strong>{{ info.message }}</strong>
+                </p>
+                <div class="flex-row center">
+                    <button #button1 class="button-style modal-btn" routerLink="/home">{{ info.option1 }}</button>
+                    <button #button2 class="button-style modal-btn" *ngIf="info.option2 && !isLimitedTime" (click)="closePopUp()">
+                        {{ info.option2 }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

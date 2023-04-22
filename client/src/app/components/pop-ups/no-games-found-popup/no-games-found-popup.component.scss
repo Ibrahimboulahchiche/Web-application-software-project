@@ -1,0 +1,22 @@
+.no-game {
+    position: absolute;
+    border: solid;
+    width: 25vw;
+    top: 40vh;
+    left: 35vw;
+}
+
+.no-hover {
+    
+    &:hover {
+        transform: scale(1);
+        background-color: white;
+      }
+    
+}
+
+.game-btn {
+    width: fit-content; 
+    float: right;
+    margin: 0.5vh
+}

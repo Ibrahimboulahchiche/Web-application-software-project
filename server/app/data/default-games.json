@@ -1,0 +1,21 @@
+{
+    "games": [
+        {
+            "id": "0",
+            "description": "Mon Jeu",
+            "isEasy": "true",
+            "ranking": [
+                [
+                    { "name": "ibrahim", "score": 19996 },
+                    { "name": "ibrahim2", "score": 19996 },
+                    { "name": "ibrahim3", "score": 19996 }
+                ],
+                [
+                    { "name": "ibrahim", "score": 19996 },
+                    { "name": "ibrahim", "score": 19996 },
+                    { "name": "ibrahim", "score": 19996 }
+                ]
+            ]
+        }
+    ]
+}

@@ -1,0 +1,100 @@
+<head>
+    <meta charset="UTF-8" />
+    <title>Jeu classic</title>
+</head>
+<body>
+    <div class="flex-row center header">
+        <app-quit-button (click)="onQuitGame()"></app-quit-button>
+        <h1 class="titre">{{ this.gameTitle }}</h1>
+        <app-hint
+            *ngIf="this.matchmakingService.isSoloMode || this.matchmakingService.isLimitedTimeSolo"
+            (click)="hintModeButton()"
+            #hintElement
+        ></app-hint>
+    </div>
+    <div *ngIf="isLoading" class="loading-screen">
+        <app-spinner #spinner class="spinner"></app-spinner>
+    </div>
+    <div class="flex-column center">
+        <div class="flex-row center data-container">
+            <div class="flex-row difference-container">
+                <app-found-differences-counter
+                    class="hints-container"
+                    [username]="
+                        this.getPlayerUsername(true) !== undefined
+                            ? isCoop
+                                ? this.getPlayerUsername(true) + ' et ' + this.getPlayerUsername(false)
+                                : this.getPlayerUsername(true)
+                            : isOriginallyCoop
+                            ? this.player2
+                            : this.player1
+                    "
+                    [differencesFound]="differencesFound1"
+                    [differencesNbr]="!this.isLimitedTime ? (isOneVersusOne ? minDifferences : totalDifferences) : -1"
+                    [ngClass]="{
+                        currentPlayer: activePlayer || this.isCoop || this.isLimitedTimeSolo
+                    }"
+                ></app-found-differences-counter>
+                <app-found-differences-counter
+                    class="hints-container"
+                    *ngIf="isOneVersusOne && !this.isLimitedTime"
+                    [username]="this.player2"
+                    [differencesFound]="differencesFound2"
+                    [differencesNbr]="isOneVersusOne ? minDifferences : totalDifferences"
+                    [ngClass]="{
+                        currentPlayer: !activePlayer
+                    }"
+                ></app-found-differences-counter>
+            </div>
+            <div class="timer-container">
+                <div #penalty *ngIf="this.gameConstantsService.penaltyValue > 0" class="penalty-message">
+                    Penalité : +{{ this.gameConstantsService.penaltyValue }}s
+                </div>
+                <app-timer #timerElement [isCountdown]="this.isLimitedTime" (timeReachedZero)="onTimerEnd()"></app-timer>
+            </div>
+        </div>
+        <app-info-card
+            class="info-card"
+            *ngIf="games"
+            [name]="this.gameTitle"
+            [isEasy]="this.isEasy"
+            [matchType]="this.currentMatchType"
+            [gameConstantsService]="this.gameConstantsService"
+        ></app-info-card>
+        <div #cheatElement tabindex="0" [ngStyle]="{ 'background-color': this.canvasHandlingService.backgroundColor }" class="cheat-mode">
+            Mode triche
+        </div>
+
+        <div class="flex-row center canvas-container">
+            <canvas #originalImage width="640px" height="480px" (mousedown)="this.onMouseDown($event)"></canvas>
+            <canvas #modifiedImage width="640px" height="480px" (mousedown)="this.onMouseDown($event)"></canvas>
+        </div>
+
+        <app-chat #chat class="chat-container" [isGameInteractive]="isGameInteractive"></app-chat>
+        <div *ngIf="replayModeService.shouldShowReplayModeGUI" class="flex-column space-around replay-mode">
+            <h2>REPLAY MODE</h2>
+            <div class="flex-row space-around">
+                <button class="button-style replay-button" title="Restart Replay" (click)="this.replayModeService.launchReplayMode()">
+                    <span class="material-symbols-outlined replay-icon"> replay </span>
+                </button>
+                <button
+                    [ngClass]="{
+                        gameFinish: replayModeService.isReplayModeFinished
+                    }"
+                    class="flex-row center button-style"
+                    title="Play Replay"
+                    (click)="this.replayModeService.togglePauseReplayMode()"
+                >
+                    <span *ngIf="replayModeService.isReplayModePaused" class="material-symbols-outlined replay-icon"> play_arrow </span>
+                    <span *ngIf="!replayModeService.isReplayModePaused" class="material-symbols-outlined replay-icon"> pause </span>
+                </button>
+                <button class="button-style replay-button" (click)="onReplaySpeedButtonClick()">x{{ currentReplaySpeed }}</button>
+            </div>
+        </div>
+    </div>
+
+    <div #errorMessage class="error-message">ERREUR</div>
+    <app-game-over-pop-up #popUpElement></app-game-over-pop-up>
+    <audio #successSound src="./assets/sound/success2.mp3"></audio>
+    <audio #errorSound src="./assets/sound/fail2.mp3"></audio>
+</body>

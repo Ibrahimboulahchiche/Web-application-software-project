@@ -1,0 +1,125 @@
+.button-style {
+  display: flex;
+
+  padding: 1vh 1.5vh;
+  scale: 0.7;
+}
+
+.display{
+  display:none;
+}
+
+.no-hover {
+  &:hover {
+    transform: scale(1);
+    background-color: white;
+    cursor: default;
+  }
+}
+
+canvas{
+  position: absolute;
+}
+
+.bigger {
+  scale: 1;
+}
+
+.bigger-font {
+  font-size: 1.75vh;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 40px;
+}
+
+.popUp {
+  margin-right: 100vw;
+}
+
+.main-container {
+  width: 100%;
+  height: 70vh;
+  
+  // border: solid red;
+}
+
+// Canvas CSS
+.canvas {
+  position: relative;
+  width: 640px;
+  height: 480px;
+  border: solid;
+  background-color: whitesmoke;
+}
+
+.drawing-canvas {
+  position: absolute;
+  width: 640px;
+  height: 480px;
+  // border:solid red; 
+}
+
+.picture-option{
+  // border: solid orange;
+  scale: 0.9;
+}
+
+.optionIcon{
+  // border: solid yellowgreen;
+  scale: 1.5;
+  padding: 1vh 2vh;
+  // margin: 1vh;
+}
+
+.color {
+  height: 5vh;
+  width: 4vw;
+  border: solid 2px;
+  margin-left: 1vw;
+}
+
+.reverse-control {
+  display: flex;
+}
+
+.game-container {
+  height: 15vh;
+  width: 75%;
+  
+  justify-content: space-between;
+
+}
+
+.penWidth { 
+  scale: 0.9;
+  width: 6vw;
+}
+
+.button-title {
+  padding: 0.5vh;
+  font-size: 1.5vh;
+  font-weight: 600;
+  color: rgb(182, 64, 64);
+}
+
+.button-title.right {
+  border-right: 2px solid black; 
+}
+
+.button-title.left {
+  border-left: 2px solid black; 
+}
+
+.select-enlarged {
+  font-size: 1.2em;
+}
+
+
+.hidden-input {
+  position: relative;
+  bottom: 5vh;
+  left: 2vw;
+  scale: 0.0001;
+}

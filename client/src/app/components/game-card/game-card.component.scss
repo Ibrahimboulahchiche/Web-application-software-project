@@ -1,0 +1,88 @@
+/* règles générales */
+.game-card {
+    width: 40vw;
+    height: 39vh;
+
+    border: solid rgb(230, 230, 11);
+    border-radius: 2vh;
+}
+
+/* Content style */
+.description-container {
+    position: absolute;
+
+    width: 39.5vw;
+    height: 39vh;
+}
+
+.title {
+    font-weight: 800;
+    font-size: 3vh;
+    letter-spacing: 0.1vw;
+}
+
+.difficulty {
+    margin: 1.5vh;
+}
+
+.content-container {
+    justify-content: space-around;
+    
+    height: 39vh;
+    width: 40vw;
+}
+
+.original-picture {
+    height: 25vh;
+    border-radius: 20px;
+    border: solid;
+}
+
+.classement-container {
+    justify-content: space-around;
+
+    border: solid;
+    border-radius: 20px;
+
+    height: 25vh;
+    width: 19vw;
+}
+
+.mode {
+    font-weight: 600;
+}
+
+.divider {
+    border: solid 1px;
+    height: 20vh;
+}
+
+.badge-container{
+    margin-left: 2vw;
+    margin-top: 5vh;
+}
+
+.badge-icon {
+    height: 5vh;
+    scale: 0.75;
+}
+
+.pseudo {
+    text-overflow: ellipsis;
+    width: 4vw;
+    overflow: hidden;
+}
+
+.description {
+    font-size: 2vh;
+    font-weight: 600;
+}
+
+.text {
+    justify-content: space-around;
+
+    margin-right: 3vw;
+    width: 20vw;
+}
+
+

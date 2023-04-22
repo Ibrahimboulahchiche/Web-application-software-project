@@ -1,0 +1,36 @@
+.hint-container {
+    position: absolute;
+
+    top: 0px;
+    right: 0px;
+    margin: 2vh;
+
+    background-color: white;
+    border: solid;
+    border-radius: 100%;
+
+    width: 12vh;
+    height: 12vh;
+
+    &:hover {
+        cursor: pointer;
+        background-color: salmon;
+        scale: 0.9;
+    }
+}
+
+.nb-hints {
+    text-align: center;
+    font-weight: 700;
+    font-size: 2vh;
+
+    margin-top: 9vh;
+}
+
+.hints-icon {
+    position: relative;
+
+    scale: 0.60;
+    bottom: 14vh;
+}
+

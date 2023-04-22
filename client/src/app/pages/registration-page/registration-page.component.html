@@ -1,0 +1,63 @@
+<head>
+    <meta charset="UTF-8" />
+    <title>Register Page</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,200" />
+</head>
+<body>
+    <Section class="flex-row center header">
+        <app-back-button></app-back-button>
+        <h1 class="title" *ngIf="this.id !== '-1'">Jeu Classique</h1>
+        <h1 class="title" *ngIf="this.id === '-1'">Jeu Temps Limité</h1>
+    </Section>
+    <Section class="flex-row center registerContainer">
+        <app-no-games-found-popup *ngIf="noGamesAvailableOnServer"></app-no-games-found-popup>
+        <form *ngIf="!hasUsernameRegistered && !noGamesAvailableOnServer" [formGroup]="registrationForm" class="flex-row register-input">
+            <label class="flex-row center user-title" for="input"><b>pseudo :</b></label>
+            <input
+                name="userName"
+                class="button-style no-hover"
+                id="input"
+                type="text"
+                placeholder="MismatchMaster"
+                formControlName="username"
+                required
+                autocomplete="off"
+                title="Only letters and numbers are allowed"
+            />
+            <button
+                class="button-style play-button no-hover"
+                (click)="registerUser()"
+                [disabled]="registrationForm.invalid"
+                [ngClass]="{ 'not-allowed': registrationForm.invalid, allowed: registrationForm.valid }"
+            >
+                <span
+                    class="material-symbols-outlined play-icon"
+                    id="play-icon"
+                    [ngClass]="{ 'not-allowed': registrationForm.invalid, allowed: registrationForm.valid }"
+                >
+                    play_arrow
+                </span>
+            </button>
+        </form>
+
+        <div *ngIf="hasUsernameRegistered">
+            <div class="flex-column center message-container">
+                <div *ngIf="queueStatusMessage !== '' && !hasFoundIncomingPlayer" class="flex-column center">
+                    <h2>{{ queueStatusMessage }}</h2>
+                    <app-spinner *ngIf="this.id !== '-1'" spinner></app-spinner>
+                </div>
+                <div *ngIf="this.id === '-1' && showButtons" class="flex-row space-around yesNo">
+                    <button class="button-style" (click)="createSoloLimitedTimeGame()">Solo</button>
+                    <button class="button-style" (click)="limitedTimeMatchId ? joinLimitedTimeGame() : createCoopGame()">Coop</button>
+                </div>
+                <div *ngIf="hasFoundIncomingPlayer" class="flex-column center">
+                    <h2>{{ queueStatusMessage }}</h2>
+                    <div class="flex-row space-around yesNo">
+                        <button class="button-style play-button" (click)="acceptIncomingPlayer()">Yes</button>
+                        <button class="button-style play-button" (click)="refuseIncomingPlayer()">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </Section>
+</body>

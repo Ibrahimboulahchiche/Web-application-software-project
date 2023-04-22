@@ -1,0 +1,51 @@
+.header {
+    height: 11vh;
+}
+
+.projectLogo {
+    margin-top: 4vh;
+}
+
+.btn-container{
+    position: absolute;
+
+    width: 43vw;
+
+    top: 0;
+    right: 0;
+    margin: 2vw 5vw 0vw 0vw;
+}
+
+.game-btn {
+    width: fit-content; 
+    float: right;
+    margin: 0.5vh
+}
+
+.not-allowed {
+    cursor: not-allowed;
+}
+
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.no-game {
+    position: absolute;
+    border: solid;
+    width: 25vw;
+    top: 40vh;
+    left: 35vw;
+}
+
+.no-hover {
+    
+    &:hover {
+        transform: scale(1);
+        background-color: white;
+      }
+    
+}

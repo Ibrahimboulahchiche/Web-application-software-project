@@ -1,0 +1,40 @@
+<div class="flex-row game-card">
+    <div class="flex-column description-container">
+        <div class="flex-column center">
+            <div class="title">{{ game.gameData.name }}</div>
+            <div class="flex-row font-size difficulty">
+                <div><strong> Difficulté :</strong></div>
+                <div [ngStyle]="{ color: this.difficultyColor }">{{ '&nbsp;' + difficulty }}</div>
+            </div>
+        </div>
+        <div class="flex-row center content-container">
+            <img img src="{{ originalImageSrc }}" class="original-picture" alt="original-picture" />
+            <div class="flex-column center classement-container">
+                <div class="description">Classement</div>
+                <div class="flex-row text">
+                    <div class="flex-column badge-container">
+                        <img src=".\assets\img\gold-badge.png" class="badge-icon" alt="gameLogo" />
+                        <img src=".\assets\img\silver-badge.png" class="badge-icon" alt="gameLogo" />
+                        <img src=".\assets\img\bronze-badge.png" class="badge-icon" alt="gameLogo" />
+                    </div>
+                    <div class="flex-column center mode">
+                        <p class="font-size">Solo</p>
+                        <div class="flex-row" *ngFor="let player of game.gameData.soloRanking">
+                            <p class="font-size pseudo" *ngIf="player.name && player.score">{{ player.name }} :</p>
+                            <p class="font-size" *ngIf="player.score">{{ this.scoreToString(player.score) }}</p>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="flex-column center mode">
+                        <p class="title-mode font-size">1 VS 1</p>
+                        <div class="flex-row" *ngFor="let player of game.gameData.oneVersusOneRanking">
+                            <p class="pseudo font-size" *ngIf="player.name && player.score">{{ player.name }} :</p>
+                            <p class="font-size">{{ this.scoreToString(player.score) }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-overlay [id]="game.gameData.id.toString()" [isPlayable]="isPlayable" [matchToJoinIfAvailable]="game.matchToJoinIfAvailable"></app-overlay>
+</div>

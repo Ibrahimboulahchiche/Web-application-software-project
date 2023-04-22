@@ -1,0 +1,25 @@
+<div class="flex-column center chat-container">
+    <div class="flex-row center chat-header">{{ title }}</div>
+    <div #chat class="chat-body">
+        <div *ngFor="let message of messages">
+            <div
+                class="message-container"
+                [ngClass]="{
+                    'sent-by-system': message.sentBySystem,
+                    'sent-by-player-1': message.sentByPlayer1,
+                    'sent-by-player-2': !message.sentByPlayer1,
+                    'sent-updated-score': message.sentUpdatedScore
+                }"
+            >
+                <div class="font-size message-username">
+                    <strong>{{ message.username }}</strong> - {{ message.sentTime | date: 'HH:mm:ss' }}
+                </div>
+                <div class="font-size">{{ message.text }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="flex-row center chat-footer" *ngIf="isMode1vs1">
+        <input #inputElement type="text" maxlength="200" [(ngModel)]="newMessage" (keyup.enter)="sendMessage()" [disabled]="!isGameInteractive" />
+        <button (click)="sendMessage()" [disabled]="!isGameInteractive"><span class="material-symbols-outlined"> send </span></button>
+    </div>
+</div>
