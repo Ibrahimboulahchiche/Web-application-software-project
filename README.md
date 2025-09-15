@@ -1,6 +1,7 @@
 # Application-Web (Found Differences Game) 
 French description will follow:
-client : le site Web fait avec le cadriciel(framework) Angular.
+
+client : le site Web fait avec le cadriciel (framework) Angular.
 serveur : le serveur dynamique bâti avec la librairie Express ou NestJs (selon votre choix).
 
 
