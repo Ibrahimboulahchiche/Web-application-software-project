@@ -48,7 +48,7 @@ Cela effectue les 2 étapes suivantes :
 1. Bundle generation : Traduire le code TypeScript et la syntaxe Angular en JavaScript standard. À la fin de cette étape, vous verrez que les fichiers suivants sont générés : vendor.js,polyfills.js, main.js,runtime.js et styles.css. Ces fichiers contiennent le code de votre application ainsi que le CSS des différents composants.
 
 
-2. Development Server : un serveur web statique sera lancé sur votre machine pour pouvoir servir votre application web. Le serveur est lancé sur le port 4200 et est accessible à travers http://localhost:4200/ ou 127.0.0.1:4200. Une page web avec cette adresse s'ouvrira automatiquement.
+2. Développement serveur : un serveur web statique sera lancé sur votre machine pour pouvoir servir votre application web. Le serveur est lancé sur le port 4200 et est accessible à travers http://localhost:4200/ ou 127.0.0.1:4200. Une page web avec cette adresse s'ouvrira automatiquement.
 Note : le serveur de développement n'est accessible qu'à partir de votre propre machine. Vous pouvez le rendre disponible à tous en ajoutant --host 0.0.0.0 dans la commande npm start. Le site sera donc accessible dans votre réseau local à partir de votre adresse IP suivie du port 4200. Par exemple : 132.207.5.35:4200. Notez que le serveur de développement n'est pas fait pour un déploiement ouvert et vous recevrez un avertissement en le lançant.
 
 ## English Version
@@ -100,19 +100,16 @@ ng serve --open
 
 This performs the following two steps:
 
-Bundle Generation: Translates TypeScript and Angular syntax into standard JavaScript.
+1. Bundle Generation: Translates TypeScript and Angular syntax into standard JavaScript.
 At the end of this step, the following files are generated: vendor.js, polyfills.js, main.js, runtime.js, and styles.css.
 These files contain your application code as well as the CSS of the various components.
 
-Note: This is a development build: file sizes are large and the code is not minified. You can debug using browser developer tools or VSCode breakpoints.
 
-Development Server: A static web server is launched on your machine to serve your web application.
+2. Development Server: A static web server is launched on your machine to serve your web application.
 The server runs on port 4200 and can be accessed at http://localhost:4200/ or 127.0.0.1:4200.
 A web page will open automatically in your browser.
-
-Note: The development server is only accessible from your own machine.
-To make it available on your local network, add --host 0.0.0.0 to the npm start command.
-The site will then be accessible from your local IP followed by port 4200, e.g., 132.207.5.35:4200.
-The development server is not intended for public deployment, and you will receive a warning if you try to run it as such.
+Note: The development server is only accessible from your own machine.To make it available on your local network, add --host 0.0.0.0 to the npm start command.
+The site will then be accessible from your local IP followed by port 4200, e.g., 132.207.5.35:4200.The development server is not intended for public deployment,
+and you will receive a warning if you try to run it as such.
 
 
