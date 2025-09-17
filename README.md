@@ -1,4 +1,4 @@
-# Projet Application-web (Hiver 2023): Angular + Express
+# Projet application web (Hiver 2023): Angular + Express
 English will follow!
 ## Description
 Ce projet est composé de deux parties :
@@ -51,7 +51,7 @@ Cela effectue les 2 étapes suivantes :
 2. Développement serveur : un serveur web statique sera lancé sur votre machine pour pouvoir servir votre application web. Le serveur est lancé sur le port 4200 et est accessible à travers http://localhost:4200/ ou 127.0.0.1:4200. Une page web avec cette adresse s'ouvrira automatiquement.
 Note : le serveur de développement n'est accessible qu'à partir de votre propre machine. Vous pouvez le rendre disponible à tous en ajoutant --host 0.0.0.0 dans la commande npm start. Le site sera donc accessible dans votre réseau local à partir de votre adresse IP suivie du port 4200. Par exemple : 132.207.5.35:4200. Notez que le serveur de développement n'est pas fait pour un déploiement ouvert et vous recevrez un avertissement en le lançant.
 
-# Projet web application (Winter 2023): Angular + Express
+# Web application project (Winter 2023): Angular + Express
 
 ## English Version
 
